@@ -1,0 +1,6 @@
+{
+  "name": "Responsive Layout",
+  "description": "A highly responsive, mobile-first frontend layout using semantic HTML5, CSS Grid, Flexbox, and vanilla JavaScript.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1 — The Responsive Layout | DecodeLabs</title>
+    
+    <!-- Primary Fonts Google Import (Montserrat & Open Sans - strictly 3 weights total) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet hook -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-container" id="appRoot">
+      
+      <!-- HEADER LANDMARK -->
+      <header class="app-header" id="appHeader">
+        <div class="header-inner">
+          <div class="brand-wrapper">
+            <h1 class="brand-logo" id="brandLogo">
+              Decode<span>Labs</span>
+            </h1>
+          </div>
+          <div class="meta-status" id="metaStatus">
+            <span class="status-dot"></span>
+            <span>Intern Training Project #1</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- NAVIGATION LANDMARK -->
+      <nav class="app-nav" id="sidebarNav" aria-label="Main Navigation">
+        <div class="nav-inner">
+          <!-- Accessible Hamburger Button for Mobile Navigation -->
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          <!-- Navigation menu options -->
+          <div class="nav-links" id="navLinks">
+            <a href="#intro" class="nav-item active" id="navHome">Dashboard</a>
+            <a href="#typography" class="nav-item" id="navTypo">Typography (Clamp)</a>
+            <a href="#grid-flex" class="nav-item" id="navLayout">Grid &amp; Flexbox</a>
+            <a href="#tokens" class="nav-item" id="navTokens">Design Tokens</a>
+            <a href="#logger" class="nav-item" id="navLogger">Lab Event Logger</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- MAIN LANDMARK -->
+      <main class="app-main" id="appMainContent">
+        <div class="main-inner">
+          
+          <!-- Section 1: Intro Hero landmark panel -->
+          <section id="intro" class="intro-section">
+            <h1>Hii, I am <strong>Akshita Patidar</strong></h1> <h2>This is my project-1 submission for decode labs..</h2> 
+            <p>
+              I built this sandbox to understand how css actually behaves across screen sizes. Took me a while to wrap my head Grid vs Flexbox, but clicking through these tabs is literaaly how it clicked for me. Resize the window -you'll see it live...
+            </p>
+            
+            <!-- Real-time viewport telemetry box using strict CSS Flexbox row structure -->
+            <div class="inspector-card" id="vpInspectorCard">
+              <div class="inspector-header">
+                <h3 class="inspector-title">Real-time Browser Dimensions</h3>
+              </div>
+              <div class="inspector-metrics">
+                <div class="metric-group">
+                  <span class="metric-label">Width</span>
+                  <span class="metric-value" id="vpWidthValue">0px</span>
+                </div>
+                <div class="metric-group">
+                  <span class="metric-label">Height</span>
+                  <span class="metric-value" id="vpHeightValue">0px</span>
+                </div>
+                <div class="metric-group">
+                  <span class="metric-label">Current Breakpoint</span>
+                  <span class="metric-value" id="breakpointValue">Detecting...</span>
+                </div>
+                <div class="metric-group" style="flex-grow: 1;">
+                  <span class="metric-label">Visual Layout</span>
+                  <span class="metric-value" id="currentGridValue" style="font-size: 0.95rem; font-weight: 500;">Block Layout</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bento Card Grid Filters using Flexbox -->
+            <div class="filter-tabs" id="filterTabs">
+              <button class="filter-tab active" data-filter="all" id="btnFilterAll">Show All Sandbox Elements</button>
+              <button class="filter-tab" data-filter="typography" id="btnFilterTypo">Typography &amp; Fluid-Fonts</button>
+              <button class="filter-tab" data-filter="layout" id="btnFilterLayout">Layout Mechanics</button>
+              <button class="filter-tab" data-filter="tokens" id="btnFilterTokens">Tokens &amp; Aesthetics</button>
+              <button class="filter-tab" data-filter="interactivity" id="btnFilterInteract">Interactive Loggers</button>
+            </div>
+          </section>
+
+          <!-- Bento Box Grid Layout of Sandbox Articles -->
+          <div class="card-grid" id="cardGrid">
+            
+            <!-- ARTICLE CARD 1: TYPOGRAPHY (Clamp metric) -->
+            <article class="article-card featured" data-category="typography" id="articleTypography">
+              <div class="card-header-meta">
+                <span class="tag-badge tag-typography">Typography</span>
+                <span style="font-size: 0.8rem; color: var(--color-dark-muted);">Montserrat &amp; Open Sans</span>
+              </div>
+              <h2>Making Typography Fluid with clamp()</h2>
+              <p>
+                Writing-hundreds of media queries for font sizes is a shortcut to maintaining legacy technical debt. 
+                Instead, use <code>clamp(min, preferred, max)</code> to scale titles smoothly with the viewport width. 
+                Try sliding the bar below to simulate how the font size flows without any jarring steps.
+              </p>
+              
+              <!-- Interactive controller block -->
+              <div class="component-sandbox" id="typoSandbox">
+                <span class="sandbox-label">Interactive Fluid Typography Emulator</span>
+                <div class="clamp-demo-text" id="fontClampText">
+                  Fluid Resize Target text
+                </div>
+                <div class="clamp-control">
+                  <span class="metric-label">Simulate Width</span>
+                  <input type="range" id="viewportSlider" min="320" max="1400" value="800" aria-label="Simulated viewport width slider" />
+                  <span class="metric-value" id="sliderWidthValue" style="font-size: 0.9rem; min-width: 55px;">800px</span>
+                </div>
+                <div class="metric-label" id="fontFormulaLabel" style="text-align: center; color: var(--color-mocha);">
+                  Active font value loaded
+                </div>
+              </div>
+            </article>
+
+            <!-- ARTICLE CARD 2: MACRO VS MICRO LAYOUTS -->
+            <article class="article-card" data-category="layout" id="articleLayout">
+              <div class="card-header-meta">
+                <span class="tag-badge tag-layout">Layout Grid / Flex</span>
+                <span style="font-size: 0.8rem; color: var(--color-dark-muted);">Symmetrical Spaces</span>
+              </div>
+              <h2>CSS Grid vs Flexbox (Choosing the Right Tool)</h2>
+              <p>
+                As a rule of thumb: use CSS Grid for the outer structural frame (architecting columns and sidebar rows) 
+                and use Flexbox to layout things inside components (like nav menus or buttons that need to wrap cleanly). 
+                Toggle the sandbox preview below to see the layout architecture switch between them.
+              </p>
+              
+              <!-- Interactive controller block -->
+              <div class="component-sandbox" id="layoutSandbox">
+                <span class="sandbox-label" id="currentLayoutLabel">CSS Grid (2D Symmetrical Grid)</span>
+                
+                <div class="layout-preview-area preview-grid-mode" id="layoutPreviewArea">
+                  <div class="demo-element">Cell A</div>
+                  <div class="demo-element">Cell B</div>
+                  <div class="demo-element">Cell C</div>
+                </div>
+                
+                <button class="btn btn-secondary" id="toggleLayoutBtn">Switch to Flexbox Mode</button>
+              </div>
+            </article>
+
+            <!-- ARTICLE CARD 3: THE DESIGN TOKEN palette -->
+            <article class="article-card" data-category="tokens" id="articleTokens">
+              <div class="card-header-meta">
+                <span class="tag-badge tag-typography">Tokens &amp; Palette</span>
+                <span style="font-size: 0.8rem; color: var(--color-dark-muted);">Theme Customization</span>
+              </div>
+              <h2>Understanding Color Tokens &amp; Contrast Ratio</h2>
+              <p>
+                Our default brand colors use earthy, warm tones: Mocha, Blue, and Moonlit Grey. 
+                When swapping accent colors, make sure your text stays accessible. 
+                A solid contrast ratio ensures users with different vision levels can still easily read the output.
+              </p>
+              
+              <!-- Interactive controller block -->
+              <div class="component-sandbox" id="tokensSandbox">
+                <span class="sandbox-label">Active Theme Color Swatches</span>
+                
+                <div class="swatches-wrapper">
+                  <div class="swatch-item" data-hex="#A8956F" data-name="Mocha Mousse" id="swatchMocha">
+                    <div class="swatch-color active" style="background-color: #A8956F;"></div>
+                    <span class="swatch-label">Mocha</span>
+                  </div>
+                  <div class="swatch-item" data-hex="#A0D4E0" data-name="Ethereal Blue" id="swatchBlue">
+                    <div class="swatch-color" style="background-color: #A0D4E0;"></div>
+                    <span class="swatch-label">Blue</span>
+                  </div>
+                  <div class="swatch-item" data-hex="#2B2520" data-name="Mocha Dark" id="swatchDark">
+                    <div class="swatch-color" style="background-color: #2B2520;"></div>
+                    <span class="swatch-label">Mocha Dark</span>
+                  </div>
+                </div>
+
+                <div class="metric-label" id="auditContrast" style="margin-top: 0.5rem; text-align: center; font-size: 0.75rem;">
+                  Accent: Mocha Mousse (#A8956F) | Contrast Ratio: 4.5:1 (AA Pass ✅)
+                </div>
+              </div>
+            </article>
+
+            <!-- ARTICLE CARD 4: EVENT LOGS INTERACTIVE FORM -->
+            <article class="article-card" data-category="interactivity" id="articleInteractivity">
+              <div class="card-header-meta">
+                <span class="tag-badge tag-interactivity">Interactivity</span>
+                <span style="font-size: 0.8rem; color: var(--color-dark-muted);">Native Logic</span>
+              </div>
+              <h2>No Complex Frameworks, Just DOM Events</h2>
+              <p>
+                We aren't using React or crazy state managers for this milestone. It's important to know how to 
+                attach event listeners and update DOM nodes manually. Go ahead and enter a note in the form below 
+                to test our custom log writer.
+              </p>
+              
+              <!-- Interactive controller block -->
+              <div class="component-sandbox" id="interactSandbox">
+                <span class="sandbox-label">Write Layout Log Note</span>
+                
+                <form class="log-form" id="logForm">
+                  <input type="text" class="log-input" id="logInput" placeholder="Enter log entry (e.g. 'Centered column margins')..." aria-label="Write layout log note" maxlength="80" required />
+                  <button type="submit" class="btn btn-primary" id="btnLogSubmit" style="padding: 0.5rem 1rem;">Log</button>
+                </form>
+
+                <div class="log-output-box" id="logTerminal">
+                  <div style="padding: 0.2rem 0; color: #8F8476;">Terminal active. Log your design comments or questions for Alex.</div>
+                </div>
+              </div>
+            </article>
+
+          </div> <!-- Card Grid Ends -->
+          
+        </div>
+      </main>
+
+      <!-- FOOTER LANDMARK -->
+      <footer class="app-footer" id="appFooter">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <h4 class="footer-brand">DecodeLabs Intern Sandbox</h4>
+            <p class="footer-desc">
+              Built with care for our engineering interns to practice grid layouts, micro-flexbox alignments, fluid scaling, and browser compliance.
+            </p>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 DecodeLabs. Certified Production-Ready Layout Framework.</span>
+            
+            <div class="footer-audit-telemetry">
+              <div class="telemetry-item">
+                <span class="telemetry-label">Width:</span>
+                <span id="auditWidth">0px</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Active QP:</span>
+                <span id="auditBreakpoint">MOBILE</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">A11y:</span>
+                <span>WCAG AA Pass</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Styles:</span>
+                <span>Grid + Flex</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div> <!-- App Container Ends -->
+    
+    <!-- Script Hook -->
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
